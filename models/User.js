@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
+    //register user default
     firstname:{
         type:String,
         required:true
@@ -28,12 +29,33 @@ const UserSchema = new Schema({
         type:String,
         required:true
     },
-    phone:{
-        type:String,
-        required:true
-    },
     avatar:{
         type:String,
+    },
+    //register service
+    skills:{
+        type:String
+    },
+    phone:{
+        type:String
+    },
+
+
+    //upload service
+    title:{
+        type:String
+    },
+    category:{
+        type:String
+    },
+    desc:{
+        type:String
+    },
+    price:{
+        type:Number
+    },
+    processtime:{
+        type:String
     },
     createdAt:{
         type:Date,

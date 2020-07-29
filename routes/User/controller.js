@@ -82,7 +82,8 @@ module.exports = {
         }
     },
     filterUser: async (req,res) =>{
-        const username = req.body.firstname
+        const q = req.query
+        const username = req.body.username
         try{
             const result = await User.find({username:username}).exec();
             

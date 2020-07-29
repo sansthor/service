@@ -1,25 +1,23 @@
 const {Service} = require('../../models')
 
 module.exports = {
-    addSkills: async (req,res) =>{
+    getService: async (req,res) =>{
         try{
-            const result = await Service.create({...req.body})
-            res.send({message:'skill added', data:result})
-        }
-        
-        catch(error){
-            res.send(error)
-        }
-    },
-    updateSkills: async (req,res) =>{
-        const {id} = req.params;
-        try{
-            const result = await Service.findByIdAndUpdate(id,{...req.body})
-            res.send({message:'skill updated', data:result})
+            const result = await Service.find()
+            res.send({message:'get all services', data:result})
         }
         catch(error){
             res.send(error)
         }
     },
-    
+    getFilterService: async (req,res) =>{
+        const title = req.body.title
+        try{
+            const result = await Service.findOne({title:title}).exec()
+            res.send({message:'get filter services', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
+    }
 }
