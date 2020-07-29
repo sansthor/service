@@ -39,24 +39,6 @@ const UserSchema = new Schema({
     phone:{
         type:String
     },
-
-
-    //upload service
-    title:{
-        type:String
-    },
-    category:{
-        type:String
-    },
-    desc:{
-        type:String
-    },
-    price:{
-        type:Number
-    },
-    processtime:{
-        type:String
-    },
     createdAt:{
         type:Date,
         default:Date.now

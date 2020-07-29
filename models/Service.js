@@ -2,25 +2,33 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const ServiceSchema = new Schema({
+    userID:{
+        type:Schema.Types.ObjectId,
+        ref:'users'
+    },
     title:{
-        type:String,
-        required:true
+        type:String
     },
     image:{
-        type:String,
-        required:true
+        type:String
     },
     desc:{
-        type:String,
-        required:true,
+        type:String
     },
     price:{
-        type:Number,
-        required:true
+        type:Number
     },
     rating:{
-        type:Number,
-        required:true
+        type:Number
+    },
+    category:{
+        type:String
+    },
+    desc:{
+        type:String
+    },
+    processtime:{
+        type:String
     },
     createdAt:{
         type:Date,
