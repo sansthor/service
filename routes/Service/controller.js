@@ -22,7 +22,7 @@ module.exports = {
     },
     postService: async (req,res) =>{
         try{
-            const result = await Service.create({...req.body})
+            const result = await Service.create({...req.body, userID:req.token.id})
             res.send({message:'post success', data:result})
         }
         catch(error){

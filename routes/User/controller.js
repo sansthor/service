@@ -96,7 +96,7 @@ module.exports = {
     },
     registerService: async (req,res) =>{
         try{
-            const result = await User.create()
+            const result = await User.create({...req.body})
             res.send({message:'service added', data:result})
         }
         catch(error){

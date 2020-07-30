@@ -18,16 +18,19 @@ const ServiceSchema = new Schema({
     price:{
         type:Number
     },
-    rating:{
-        type:Number
-    },
     category:{
         type:String
     },
-    desc:{
+    processtime:{
         type:String
     },
-    processtime:{
+    requirement:{
+        type:String
+    },
+    commercialuse:{
+        type:Boolean
+    },
+    additionalfeature:{
         type:String
     },
     createdAt:{
