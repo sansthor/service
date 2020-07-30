@@ -3,58 +3,48 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
     //register user default
-    firstname:{
+    fullname:{
         type:String,
-        required:true
-    },
-    lastname:{
-        type:String,
-        required:true
     },
     username:{
         type:String,
-        required:true,
         unique:true
     },
     email:{
         type:String,
-        required:true,
         unique:true
     },
     password:{
         type:String,
-        required:true
     },
     address:{
         type:String,
-        required:true
     },
     avatar:{
-        type:String,
+        data:Buffer,
+        contentType:String
     },
     //register service
     skills:{
         type:String
     },
+    link:{
+        type:String
+    },
     phone:{
         type:String
     },
-
-
-    //upload service
-    title:{
+    role:{
+        type:String,
+        default:'USER'
+    },
+    bankname:{
         type:String
     },
-    category:{
+    bankaccnumber:{
         type:String
     },
-    desc:{
-        type:String
-    },
-    price:{
-        type:Number
-    },
-    processtime:{
+    bankaccname:{
         type:String
     },
     createdAt:{

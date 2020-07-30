@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.use('/user', require('./routes/User'))
+app.use('/service', require('./routes/Service'))
 
 // Routes
 app.get('/', (req, res) => {

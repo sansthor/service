@@ -82,7 +82,7 @@ module.exports = {
         }
     },
     filterUser: async (req,res) =>{
-        const q = req.query
+        // const q = req.query
         const username = req.body.username
         try{
             const result = await User.find({username:username}).exec();
@@ -94,6 +94,16 @@ module.exports = {
             res.send(error)
         }
     },
+    registerService: async (req,res) =>{
+        try{
+            const result = await User.create({...req.body})
+            res.send({message:'service added', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
+    },
+   
     logout: (req, res) => {
         req.logout();
         res.redirect("/users/login");
