@@ -25,8 +25,9 @@ module.exports = {
         }
     },
     register: async (req,res) =>{
+        const checkEmail = await User.findOne({email:req.body.email}).exec()
         try{
-            const checkEmail = await User.findOne({email:req.body.email}).exec()
+           
             if(checkEmail){
                 res.send({message:'email already registered'})
             }
@@ -58,8 +59,8 @@ module.exports = {
                     email:registeredUser.email,
                     username:registeredUser.username
                 })
-                
                 res.status(200).send({message:'log in success', result:token});
+               
                }
                else{
                 res.status(403).send({message:'email or password incorrect'})
