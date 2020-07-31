@@ -67,6 +67,18 @@ module.exports = {
 
         }
     },
+    filterUserData: async (req,res) =>{
+        const username = req.body.username
+        try{
+            const result = await User.find({username:username}).exec();
+            
+            res.send({data:result})
+        }
+        catch(error){
+            console.log(error);
+            res.send(error)
+        }
+    },
     updateUserData: async (req,res) =>{
         const {id} = req.params;
         try{
