@@ -56,5 +56,15 @@ module.exports = {
             res.send({message:error.message})
         }
       
+    },
+    getUserById: async(req,res) =>{
+        const {id} = req.params
+        try{
+            const result = await User.findById(id).exec()
+            res.send({message:'Get By Id', data:result})
+        }
+        catch(error){
+
+        }
     }
 }
