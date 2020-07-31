@@ -19,4 +19,7 @@ router.get('/getUserData', require('./controller').filterUserData);
 //Update User Data
 router.put('/updateDataUser/:id', require('./controller'). updateUserData)
 
+//Delete User Data
+router.put('/deleteDataUser/:id', require('./controller'). deleteUserData)
+
 module.exports = router;
