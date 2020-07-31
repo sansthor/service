@@ -17,6 +17,6 @@ router.get('/getDataUser/:id', require('./controller').getUserById);
 router.get('/getUserData', require('./controller').filterUserData);
 
 //Update User Data
-router.put('/updateDataUser/:id', require('./controller'). updateUserData)
+router.put('/updateDataUser/:id', require('./controller').updateUserData);
 
 module.exports = router;
