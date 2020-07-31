@@ -26,7 +26,7 @@ module.exports = {
     },
     register: async (req,res) =>{
         try{
-            const checkEmail = await User.findOne({email:req.body.email})
+            const checkEmail = await User.findOne({email:req.body.email}).exec()
             if(checkEmail){
                 res.send({message:'email already registered'})
             }
