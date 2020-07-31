@@ -42,7 +42,7 @@ module.exports = {
            
         }
         catch(error){
-            res.status(403).send({message:'email sudah terdaftar'})
+            res.status(403).send({message:error})
         }
     },
     login: async (req,res) =>{
