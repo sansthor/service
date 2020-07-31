@@ -66,5 +66,18 @@ module.exports = {
         catch(error){
 
         }
-    }
+    },
+    updateUserData: async (req,res) =>{
+        const {id} = req.params;
+        try{
+            const result = await User.findByIdAndUpdate(id,{
+                ...req.body
+            })
+            res.send({message:'update success', data:result})
+        }
+        catch(error){
+            console.log(error);
+            res.send({message:error.message})
+        }
+    },
 }

@@ -72,7 +72,7 @@ module.exports = {
         const {id} = req.params;
         try{
             const result = await User.findByIdAndUpdate(id,{
-               ...body
+                ...body
             })
             res.send({message:'update success', data:result})
         }
