@@ -13,6 +13,9 @@ router.get('/getDataUser', require('./controller').getDataUser)
 //Get User Data By Params id
 router.get('/getDataUser/:id', require('./controller').getUserById);
 
+//Get Filter User Data by UserName
+router.get('/getUserData', require('./controller').filterUserData);
+
 //Update User Data
 router.put('/updateDataUser/:id', require('./controller'). updateUserData)
 
