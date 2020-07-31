@@ -10,6 +10,7 @@ module.exports = {
             res.send(error)
         }
     },
+    //dropdown category
     getFilterCategory: async (req,res) =>{
         const category = req.params
         try{
@@ -34,6 +35,17 @@ module.exports = {
         try{
             const result = await Service.find({userID}).populate('userID')
             res.send({message:'get user upload', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
+    },
+    //get detail service
+    getDetails: async (req,res) =>{
+        const {title} = req.params
+        try{
+            const result = await Service.findOne({title:title})
+            res.send({message:'get details', data:result})
         }
         catch(error){
             res.send(error)
