@@ -13,4 +13,7 @@ router.get('/getDataUser', require('./controller').getDataUser)
 //Get User Data By Params id
 router.get('/getDataUser/:id', require('./controller').getUserById);
 
+//Update User Data
+router.put('/updateDataUser/:id', require('./controller'). updateUserData)
+
 module.exports = router;
