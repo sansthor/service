@@ -1,4 +1,4 @@
-const {Admin} = require ('../../models')
+const {Admin, User} = require ('../../models')
 const {hash,compare} = require('../../helpers');
 const {createToken} = require('../../helpers');
 
@@ -14,7 +14,7 @@ module.exports = {
             res.send({message:'Registration Success', data:result})
         }
         catch(error){
-            res.send({message:'email sudah terdaftar'})
+            res.send({message:'Email Registered'})
         }
     },
     loginAdmin: async (req,res) =>{
@@ -31,14 +31,14 @@ module.exports = {
                     username:registeredAdmin.username
                 })
                 
-                res.send({message:'log in success', result:token});
+                res.send({message:'Login successfull', result:token});
                }
                else{
-                res.status(403).send({message:'email or password incorrect'})
+                res.status(403).send({message:'Email or Password incorrect'})
             }
         }
           else{
-              res.status(403).send({message:'email not registered'})
+              res.status(403).send({message:'Email not Registered'})
           } 
         }
     
@@ -47,4 +47,14 @@ module.exports = {
             res.send({message:error.message})
         }
     },
+    getDataUser: async (req,res) =>{
+        try{
+            const result = await User.find()
+            res.send({message:'Data Succesfull', data:result})
+        }
+        catch(error){
+            res.send({message:error.message})
+        }
+      
+    }
 }
