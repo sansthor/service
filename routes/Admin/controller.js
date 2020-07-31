@@ -93,18 +93,17 @@ module.exports = {
         }
     },
     deleteUserData: async (req, res) => {
-        const {
-            id
-        } = req.params
+        const {id} = req.params;
+
         try {
-            await User.findOneAndDelete(id)
-            const result = await User.findById(id)
+            const result = await User.findByIdAndDelete(id);
+
             res.send({
-                message: `Delete data successfull`,
-                result: result
-            })
-        } catch (error) {
-            res.send(error)
+                message: `User Succesfully Deleted`,
+                data: result,
+            });
+        } catch {
+            res.send(error);
         }
     }
 }
