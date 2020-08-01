@@ -92,4 +92,16 @@ module.exports = {
             res.send({message:error.message})
         }
     },
+    deleteUserData: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            await User.findByIdAndDelete(id);
+            res.send({
+                message: `User successfully deleted`,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    },
 }
