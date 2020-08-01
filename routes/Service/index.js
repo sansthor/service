@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {verifyToken} = require('../../helpers')
 
 
 //get all list service
@@ -9,7 +10,9 @@ router.get('/details/:title', require('./controller').getDetails)
 // get service by user upload
 router.get('/find/:userID', require('./controller').getUserUpload)
 //post service
-router.post('/post-service', require('./controller').postService)
+router.post('/post-service', verifyToken, require('./controller').postService)
+//delete service
+router.delete('/delete/:id', verifyToken, require('./controller').deleteService)
 
 
 module.exports = router
