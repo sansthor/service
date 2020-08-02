@@ -1,4 +1,4 @@
-const {Admin, User} = require ('../../models')
+const {Admin, User, Service} = require ('../../models')
 const {hash,compare} = require('../../helpers');
 const {createToken} = require('../../helpers');
 
@@ -103,5 +103,19 @@ module.exports = {
         } catch (error) {
             console.error(error);
         }
+    },
+    getServiceData: async (req,res) =>{
+        try{
+            const result = await Service.find()
+            res.send({
+                message:'Data Service Succesfull', data:result
+            })
+        }
+        catch(error){
+            res.send({
+                message:error.message
+            })
+        }
+      
     },
 }
