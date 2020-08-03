@@ -1,231 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sansthor</title>
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-            crossorigin="anonymous"
-        />
-    </head>
-    <body>
-        <div class="container">
-            <h1>Sansthor API</h1>
 
-            <p>Di bawah ini adalah list endpoint yang bisa kalian akses</p>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sansthor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+</head>
 
-            <table class="table table-hover table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tujuan</th>
-                        <th scope="col">Method</th>
-                        <th scope="col">Route</th>
-                        <th scope="col">Req format example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Registrasi (User Page)</td>
-                        <td>POST</td>
-                        <td>/user/registration</td>
-                        <td>
-                            {fullname: "geraldo sepdwijaya", username: "geraldos", email: "geraldo@gmail.com", password:
-                            "12345678", ...}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Login (User Page)</td>
-                        <td>POST</td>
-                        <td>/user/login</td>
-                        <td>
-                            {email: "geraldo@gmail.com", password: "12345678"}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Get Data User (User Page)</td>
-                        <td>GET</td>
-                        <td>/user/</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Get Filter Data (User Page)</td>
-                        <td>GET</td>
-                        <td>/user/find</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Get user by Params ID (User Page)</td>
-                        <td>GET</td>
-                        <td>/user/:id</td>
-                        <td>
-                            /user/5f1589ddb81f2a37dc6b2df7
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Update User Task (User Page)</td>
-                        <td>PUT</td>
-                        <td>/user/update/:id</td>
-                        <td>
-                            /user/update/5f1589ddb81f2a37dc6b2df7
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Enroll Service (User Page)</td>
-                        <td>POST</td>
-                        <td>/user/service</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td>Register Bank (User Page)</td>
-                        <td>POST</td>
-                        <td>/user/account</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>Get all list service (Service Page)</td>
-                        <td>GET</td>
-                        <td>/service/</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">10</th>
-                        <td>Get Service Detail (Service Page)</td>
-                        <td>GET</td>
-                        <td>/service/details/:title</td>
-                        <td>
-                            /service/details/webdesign
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">11</th>
-                        <td>Get service by user upload (Service Page)</td>
-                        <td>GET</td>
-                        <td>/service/find/:userID</td>
-                        <td>
-                            /service/find/5f1589ddb81f2a37dc6b2df7
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">12</th>
-                        <td>Post Service (Service Page)</td>
-                        <td>POST</td>
-                        <td>/service/post-service</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">13</th>
-                        <td>Register Admin (Admin Page)</td>
-                        <td>POST</td>
-                        <td>/admin/registrasiAdmin</td>
-                        <td>
-                            {username: "super admin", email: "admin@gmail.com", password:
-                            "password"}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">14</th>
-                        <td>Login Admin (Admin Page)</td>
-                        <td>POST</td>
-                        <td>/admin/loginAdmin</td>
-                        <td>
-                            {email: "admin@gmail.com", password: "password"}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">15</th>
-                        <td>Get Data User (Admin Page)</td>
-                        <td>GET</td>
-                        <td>/admin/getDataUser</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">16</th>
-                        <td>Get User Data By Params id (Admin Page)</td>
-                        <td>GET</td>
-                        <td>/admin/getDataUser/:id</td>
-                        <td>
-                            /admin/getDataUser/1294937248
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">17</th>
-                        <td>Get Filter User Data by UserName (Admin Page)</td>
-                        <td>GET</td>
-                        <td>/getUserData</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">18</th>
-                        <td>Update User Data (Admin Page)</td>
-                        <td>PUT</td>
-                        <td>/admin/updateDataUser/:id</td>
-                        <td>
-                            /admin/updateDataUser/12894278934
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">19</th>
-                        <td>Delete User Data (Admin Page)</td>
-                        <td>Delete</td>
-                        <td>/admin/deletedatauser/:id</td>
-                        <td>
-                            /admin/deletedatauser/12894278934
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">20</th>
-                        <td>Get Data Service (Admin Page)</td>
-                        <td>GET</td>
-                        <td>/admin/getservicedata</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
+<body>
+    <div class="container">
+        <h1>Sansthor API</h1>
 
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
-    ></script>
+        <p>Di bawah ini adalah list endpoint yang bisa kalian akses</p>
+
+        <table class="table table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tujuan</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Route</th>
+                    <th scope="col">Req format example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Registrasi (User Page)</td>
+                    <td>POST</td>
+                    <td>/user/registration</td>
+                    <td>
+                        {fullname: "geraldo sepdwijaya", username: "geraldos", email: "geraldo@gmail.com", password:
+                        "12345678", ...}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Login (User Page)</td>
+                    <td>POST</td>
+                    <td>/user/login</td>
+                    <td>
+                        {email: "geraldo@gmail.com", password: "12345678"}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Get Data User (User Page)</td>
+                    <td>GET</td>
+                    <td>/user/</td>
+                    <td>
+                        {
+                        "message": "Data Succesfull",
+                        "data": [
+                        {
+                        "role": "USER",
+                        "_id": "5f2789a86e922200174e5507",
+                        "fullname": "agustrihanton",
+                        "username": "agus",
+                        "email": "agus@gmail.com",
+                        "password": "$2b$10$dr5oCDZvFEqDA.FwLx3e3.IuBXU04PG/9n9lO9SBzF8Sg79zUf6cG",
+                        "address": "agus",
+                        "createdAt": "2020-08-03T03:51:04.245Z",
+                        "updatedAt": "2020-08-03T03:51:04.245Z",
+                        "__v": 0
+                        },
+                        ]
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Get Filter Data (User Page)</td>
+                    <td>GET</td>
+                    <td>/user/find</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Get user by Params ID (User Page)</td>
+                    <td>GET</td>
+                    <td>/user/:id</td>
+                    <td>
+                        /user/5f1589ddb81f2a37dc6b2df7
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Update User Task (User Page)</td>
+                    <td>PUT</td>
+                    <td>/user/update/:id</td>
+                    <td>
+                        /user/update/5f1589ddb81f2a37dc6b2df7
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Enroll Service (User Page)</td>
+                    <td>POST</td>
+                    <td>/user/service</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>Register Bank (User Page)</td>
+                    <td>POST</td>
+                    <td>/user/account</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>Get all list service (Service Page)</td>
+                    <td>GET</td>
+                    <td>/service/</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>Get Service Detail (Service Page)</td>
+                    <td>GET</td>
+                    <td>/service/details/:title</td>
+                    <td>
+                        /service/details/webdesign
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">11</th>
+                    <td>Get service by user upload (Service Page)</td>
+                    <td>GET</td>
+                    <td>/service/find/:userID</td>
+                    <td>
+                        /service/find/5f1589ddb81f2a37dc6b2df7
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>Post Service (Service Page)</td>
+                    <td>POST</td>
+                    <td>/service/post-service</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">13</th>
+                    <td>Register Admin (Admin Page)</td>
+                    <td>POST</td>
+                    <td>/admin/registrasiAdmin</td>
+                    <td>
+                        {username: "super admin", email: "admin@gmail.com", password:
+                        "password"}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">14</th>
+                    <td>Login Admin (Admin Page)</td>
+                    <td>POST</td>
+                    <td>/admin/loginAdmin</td>
+                    <td>
+                        {email: "admin@gmail.com", password: "password"}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">15</th>
+                    <td>Get Data User (Admin Page)</td>
+                    <td>GET</td>
+                    <td>/admin/getDataUser</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">16</th>
+                    <td>Get User Data By Params id (Admin Page)</td>
+                    <td>GET</td>
+                    <td>/admin/getDataUser/:id</td>
+                    <td>
+                        /admin/getDataUser/1294937248
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">17</th>
+                    <td>Get Filter User Data by UserName (Admin Page)</td>
+                    <td>GET</td>
+                    <td>/getUserData</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">18</th>
+                    <td>Update User Data (Admin Page)</td>
+                    <td>PUT</td>
+                    <td>/admin/updateDataUser/:id</td>
+                    <td>
+                        /admin/updateDataUser/12894278934
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">19</th>
+                    <td>Delete User Data (Admin Page)</td>
+                    <td>Delete</td>
+                    <td>/admin/deletedatauser/:id</td>
+                    <td>
+                        /admin/deletedatauser/12894278934
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">20</th>
+                    <td>Get Data Service (Admin Page)</td>
+                    <td>GET</td>
+                    <td>/admin/getservicedata</td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+</script>
+
 </html>
