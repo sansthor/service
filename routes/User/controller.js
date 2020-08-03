@@ -28,9 +28,8 @@ module.exports = {
        
         try{
             const checkEmail = await User.findOne({email:req.body.email}).exec()
-            console.log(checkEmail);
             if(checkEmail){
-                res.status(403).send({message:'email already registered'})
+                res.status(403).send({message:'email or username already registered'})
             }
             else{
                 const {password} = req.body;
@@ -51,7 +50,6 @@ module.exports = {
         try{
             const {email, password} = req.body;
             const registeredUser = await User.findOne({email:email})
-            
             if(registeredUser !== null){
                 const compared = await compare(password,registeredUser.password)
                if(compared === true){
