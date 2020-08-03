@@ -50,5 +50,15 @@ module.exports = {
         catch(error){
             res.send(error)
         }
+    },
+    deleteService: async (req,res) =>{
+        const {id} = req.params
+        try{
+            const result = await Service.findByIdAndDelete(id)
+            res.send({message:'service deleted', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
     }
 }

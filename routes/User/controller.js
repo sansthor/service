@@ -25,24 +25,31 @@ module.exports = {
         }
     },
     register: async (req,res) =>{
+       
         try{
-            
-            const {password} = req.body;
-            const hashed = await hash(password);
-
-            const result = await User.create({...req.body,password:hashed});
-
-            res.send({message:'Registration Success', data:result})
+            const checkEmail = await User.findOne({email:req.body.email}).exec()
+            if(checkEmail){
+                res.status(403).send({message:'email or username already registered'})
+            }
+            else{
+                const {password} = req.body;
+                const hashed = await hash(password);
+    
+                const result = await User.create({...req.body,password:hashed});
+                
+                
+                res.status(200).send({message:'Registration Success', data:result})
+            }
+           
         }
         catch(error){
-            res.send({message:'email sudah terdaftar'})
+            res.status(403).send({message:error})
         }
     },
     login: async (req,res) =>{
         try{
             const {email, password} = req.body;
             const registeredUser = await User.findOne({email:email})
-            
             if(registeredUser !== null){
                 const compared = await compare(password,registeredUser.password)
                if(compared === true){
@@ -51,8 +58,8 @@ module.exports = {
                     email:registeredUser.email,
                     username:registeredUser.username
                 })
-                
-                res.send({message:'log in success', result:token});
+                res.status(200).send({message:'log in success', result:token});
+               
                }
                else{
                 res.status(403).send({message:'email or password incorrect'})
@@ -72,7 +79,7 @@ module.exports = {
         const {id} = req.params;
         try{
             const result = await User.findByIdAndUpdate(id,{
-                ...body
+                ...req.body
             })
             res.send({message:'update success', data:result})
         }
