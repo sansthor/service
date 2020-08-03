@@ -25,11 +25,12 @@ module.exports = {
         }
     },
     register: async (req,res) =>{
-        const checkEmail = await User.findOne({email:req.body.email}).exec()
+       
         try{
-           
+            const checkEmail = await User.findOne({email:req.body.email}).exec()
+            console.log(checkEmail);
             if(checkEmail){
-                res.send({message:'email already registered'})
+                res.status(403).send({message:'email already registered'})
             }
             else{
                 const {password} = req.body;
@@ -80,7 +81,7 @@ module.exports = {
         const {id} = req.params;
         try{
             const result = await User.findByIdAndUpdate(id,{
-               ...body
+                ...req.body
             })
             res.send({message:'update success', data:result})
         }
