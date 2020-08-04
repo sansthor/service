@@ -15,7 +15,7 @@ router.get('/:id', require('./controller').getById);
 router.post('/login', require('./controller').login);
 router.post('/register', require('./controller').register);
 //enroll service
-router.post('/register/service', require('./controller').registerService);
+router.put('/register/service/:id', require('./controller').registerService);
 //register bank
 router.post('/register/account', require('./controller').registerBank);
 //update profile user

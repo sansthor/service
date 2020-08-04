@@ -102,8 +102,9 @@ module.exports = {
         }
     },
     registerService: async (req,res) =>{
+        const {id} = req.params
         try{
-            const result = await User.create({...req.body})
+            const result = await User.findByIdAndUpdate(id,{...req.body})
             res.send({message:'service added', data:result})
         }
         catch(error){

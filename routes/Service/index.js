@@ -9,6 +9,9 @@ router.get('/', require('./controller').getService);
 router.get('/details/:title', require('./controller').getDetails)
 // get service by user upload
 router.get('/find/:userID', require('./controller').getUserUpload)
+
+// get filter by category
+router.get('/findby/:category', require('./controller').getFilterCategory)
 //post service
 router.post('/post-service', verifyToken, require('./controller').postService)
 //delete service
