@@ -62,12 +62,12 @@ module.exports = {
     //get detail service
     getDetails: async (req, res) => {
         const {
-            title
+            id
         } = req.params
         try {
-            const result = await Service.findOne({
-                title: title
-            })
+            const result = await Service.findById(
+                id
+            )
             res.send({
                 message: 'get details',
                 data: result
