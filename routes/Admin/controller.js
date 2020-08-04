@@ -75,6 +75,20 @@ module.exports = {
             })
         }
     },
+    getAdmin: async (req, res) => {
+        try {
+            const result = await Admin.find()
+            res.send({
+                message: 'Data Succesfull',
+                data: result
+            })
+        } catch (error) {
+            res.send({
+                message: error.message
+            })
+        }
+
+    },
     getDataUser: async (req, res) => {
         try {
             const result = await User.find()

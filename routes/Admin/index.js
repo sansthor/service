@@ -7,6 +7,9 @@ router.post('/registerAdmin', require('./controller').registerAdmin);
 //AdminLogin
 router.post('/loginAdmin', require('./controller').loginAdmin);
 
+//Data Admin
+router.get('/', require('./controller').getAdmin);
+
 //GetDataUser
 router.get('/getDataUser', require('./controller').getDataUser)
 
