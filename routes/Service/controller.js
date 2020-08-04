@@ -67,7 +67,7 @@ module.exports = {
         try {
             const result = await Service.findById(
                 id
-            )
+            ).populate('userID')
             res.send({
                 message: 'get details',
                 data: result
