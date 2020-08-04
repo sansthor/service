@@ -132,12 +132,12 @@ module.exports = {
             res.send(error)
         }
     },
-    updateUserData: async (req, res) => {
+    updateDataAdmin: async (req, res) => {
         const {
             id
         } = req.params;
         try {
-            const result = await User.findByIdAndUpdate(id, {
+            const result = await Admin.findByIdAndUpdate(id, {
                 ...req.body
             })
             res.send({
@@ -151,13 +151,32 @@ module.exports = {
             })
         }
     },
-    deleteUserData: async (req, res) => {
+    updateDataService: async (req, res) => {
+        const {
+            id
+        } = req.params;
+        try {
+            const result = await Service.findByIdAndUpdate(id, {
+                ...req.body
+            })
+            res.send({
+                message: 'update success',
+                data: result
+            })
+        } catch (error) {
+            console.log(error);
+            res.send({
+                message: error.message
+            })
+        }
+    },
+    deleteAdminData: async (req, res) => {
         const {
             id
         } = req.params;
 
         try {
-            await User.findByIdAndDelete(id);
+            await Admin.findByIdAndDelete(id);
             res.send({
                 message: `User successfully deleted`,
             });

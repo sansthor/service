@@ -19,13 +19,16 @@ router.get('/getDataUser/:id', require('./controller').getUserById);
 //Get Filter User Data by UserName
 router.get('/getUserData', require('./controller').filterUserData);
 
-//Update User Data
-router.put('/updateDataUser/:id', require('./controller').updateUserData)
+//Update Admin Data
+router.put('/updatedataadmin/:id', require('./controller').updateDataAdmin)
 
-//Delete User Data
-router.delete('/deletedatauser/:id', require('./controller').deleteUserData)
+//Delete Admin Data
+router.delete('/deletedataadmin/:id', require('./controller').deleteAdminData)
 
 //GetServiceData
 router.get('/getservicedata', require('./controller').getServiceData)
+
+//Update Service Data
+router.put('/updatedataservice/:id', require('./controller').updateDataService)
 
 module.exports = router;
