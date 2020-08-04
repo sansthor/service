@@ -16,6 +16,7 @@ app.set('view engine', 'ejs');
 
 app.use('/user', require('./routes/User'))
 app.use('/service', require('./routes/Service'))
+app.use('/order', require('./routes/Transaction'))
 app.use('/admin', require('./routes/Admin'))
 
 // Routes

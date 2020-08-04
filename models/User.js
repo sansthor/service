@@ -21,8 +21,7 @@ const UserSchema = new Schema({
         type:String,
     },
     avatar:{
-        data:Buffer,
-        contentType:String
+        type:String,
     },
     //register service
     skills:{
@@ -47,6 +46,10 @@ const UserSchema = new Schema({
     bankaccname:{
         type:String
     },
+    balance:{
+        type:Number
+    },
+   
     createdAt:{
         type:Date,
         default:Date.now
