@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AdminSchema = new Schema({
-    userID: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
     email: {
         type: String,
         required: true,
