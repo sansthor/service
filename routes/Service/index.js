@@ -6,7 +6,7 @@ const {verifyToken} = require('../../helpers')
 //get all list service
 router.get('/', require('./controller').getService);
 //get service details
-router.get('/details/:title', require('./controller').getDetails)
+router.get('/details/:id', require('./controller').getDetails)
 // get service by user upload
 router.get('/find/:userID', require('./controller').getUserUpload)
 
