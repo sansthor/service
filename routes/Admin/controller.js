@@ -245,6 +245,9 @@ module.exports = {
             res.send({message:'all status done', data:result})
         }
         catch(error){
+            res.send(error)
+        }
+    },
     getTransaction: async (req, res) => {
         try {
             const result = await Transaction.find().sort({
