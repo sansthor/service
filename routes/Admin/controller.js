@@ -235,4 +235,14 @@ module.exports = {
             res.send(error)
         }
     },
+    deleteService: async (req,res) => {
+        const {id} = req.params
+        try{
+            const result = await Service.findByIdAndDelete(id)
+            res.send({message:'delete service', data:result})
+        }
+        catch(error){
+
+        }
+    }
 }

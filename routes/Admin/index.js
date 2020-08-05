@@ -30,6 +30,8 @@ router.put('/updatedataadmin/:id', require('./controller').updateDataAdmin)
 
 //Delete Admin Data
 router.delete('/deletedataadmin/:id', require('./controller').deleteAdminData)
+//Delete Service
+router.delete('/delete/service/:id', require('./controller').deleteService)
 
 //GetServiceData
 router.get('/getservicedata', require('./controller').getServiceData)
