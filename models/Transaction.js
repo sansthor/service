@@ -23,10 +23,12 @@ const TransactionSchema = new Schema({
         default:'IN PROGRESS'
     },
     total:{
-        type:Number
+        type:Number,
+        default:0
     },
     quantity:{
-        type:Number
+        type:Number,
+        default:0
     },
     createdAt:{
         type:Date,
