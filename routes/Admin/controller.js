@@ -77,7 +77,9 @@ module.exports = {
     },
     getAdmin: async (req, res) => {
         try {
-            const result = await Admin.find()
+            const result = await Admin.find().sort({
+                createdAt: 'asc'
+            })
             res.send({
                 message: 'Data Succesfull',
                 data: result
@@ -91,7 +93,9 @@ module.exports = {
     },
     getDataUser: async (req, res) => {
         try {
-            const result = await User.find()
+            const result = await User.find().sort({
+                createdAt: 'asc'
+            })
             res.send({
                 message: 'Data Succesfull',
                 data: result
@@ -136,9 +140,15 @@ module.exports = {
         const {
             id
         } = req.params;
+        const {
+            password
+        } = req.body;
+        const hashed = await hash(password);
+
         try {
             const result = await Admin.findByIdAndUpdate(id, {
-                ...req.body
+                ...req.body,
+                password: hashed
             })
             res.send({
                 message: 'update success',
@@ -186,7 +196,9 @@ module.exports = {
     },
     getServiceData: async (req, res) => {
         try {
-            const result = await Service.find().populate('userID')
+            const result = await Service.find().populate('userID').sort({
+                createdAt: 'asc'
+            })
             res.send({
                 message: 'Data Service Succesfull',
                 data: result
@@ -198,6 +210,7 @@ module.exports = {
         }
 
     },
+
     transferBalance: async (req,res) =>{
         const {id} = req.params
         try{
@@ -235,6 +248,19 @@ module.exports = {
             res.send(error)
         }
     },
+    getTransaction: async (req, res) => {
+        try {
+            const result = await Transaction.find().sort({
+                createdAt: 'asc'
+            })
+            res.send({
+                message: 'All transaction',
+                data: result
+            })
+        } catch (error) {
+            res.send(error)
+        }
+    },
     deleteService: async (req,res) => {
         const {id} = req.params
         try{
@@ -242,7 +268,7 @@ module.exports = {
             res.send({message:'delete service', data:result})
         }
         catch(error){
-            res.send(error)
+
         }
     }
 }
