@@ -78,5 +78,14 @@ module.exports = {
         } catch (error) {
             res.send(error)
         }
+    },
+    getAllServices: async (req,res) =>{
+        try{
+            const result = await Service.find()
+            res.send({message:'get all services', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
     }
 }
