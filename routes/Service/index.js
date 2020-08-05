@@ -3,8 +3,6 @@ const router = express.Router();
 const {verifyToken} = require('../../helpers')
 
 
-//get all list service
-router.get('/', require('./controller').getService);
 //get service details
 router.get('/details/:id', require('./controller').getDetails)
 // get service by user upload

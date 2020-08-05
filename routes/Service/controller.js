@@ -3,17 +3,6 @@ const {
 } = require('../../models')
 
 module.exports = {
-    getService: async (req, res) => {
-        try {
-            const result = await Service.find().populate('userID')
-            res.send({
-                message: 'get all services',
-                data: result
-            })
-        } catch (error) {
-            res.send(error)
-        }
-    },
     //dropdown category
     getFilterCategory: async (req, res) => {
         const category = req.params
