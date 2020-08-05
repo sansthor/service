@@ -31,4 +31,7 @@ router.get('/getservicedata', require('./controller').getServiceData)
 //Update Service Data
 router.put('/updatedataservice/:id', require('./controller').updateDataService)
 
+//Get Data Transaction 
+router.get('/transaction', require('./controller').getTransaction);
+
 module.exports = router;
