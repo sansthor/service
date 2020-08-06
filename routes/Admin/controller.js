@@ -92,6 +92,27 @@ module.exports = {
         }
 
     },
+    filterAdminData: async (req, res) => {
+        const {
+            username
+        } = req.query
+
+        try {
+            const result = await Admin.find({
+                username: {
+                    $regex: username,
+                    $options: 'i'
+                }
+            }).exec();
+
+            res.send({
+                data: result
+            })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    },
     getDataUser: async (req, res) => {
         try {
             const result = await User.find().sort({
@@ -123,10 +144,16 @@ module.exports = {
         }
     },
     filterUserData: async (req, res) => {
-        const username = req.body.username
+        const {
+            fullname
+        } = req.query
+
         try {
             const result = await User.find({
-                username: username
+                fullname: {
+                    $regex: fullname,
+                    $options: 'i'
+                }
             }).exec();
 
             res.send({
@@ -211,6 +238,27 @@ module.exports = {
         }
 
     },
+    filterServiceData: async (req, res) => {
+        const {
+            title
+        } = req.query
+
+        try {
+            const result = await Service.find({
+                title: {
+                    $regex: title,
+                    $options: 'i'
+                }
+            }).exec();
+
+            res.send({
+                data: result
+            })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    },
     getTransaction: async (req, res) => {
         try {
             const result = await Transaction.find().sort({
@@ -221,6 +269,27 @@ module.exports = {
                 data: result
             })
         } catch (error) {
+            res.send(error)
+        }
+    },
+    filterTransactionData: async (req, res) => {
+        const {
+            status
+        } = req.query
+
+        try {
+            const result = await Transaction.find({
+                status: {
+                    $regex: status,
+                    $options: 'i'
+                }
+            }).exec();
+
+            res.send({
+                data: result
+            })
+        } catch (error) {
+            console.log(error);
             res.send(error)
         }
     },
