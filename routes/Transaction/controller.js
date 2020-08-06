@@ -30,8 +30,9 @@ module.exports = {
         }
     },
     getStatusCompleted: async (req,res) => {
+        const {id} = req.params
         try{
-            const result = await Transaction.find({status:'completed'})
+            const result = await Transaction.find({_id:id}).where({status:'DONE'})
             res.send({message:'all status completed', data:result})
         }
         catch(error){
