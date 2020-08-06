@@ -214,12 +214,8 @@ module.exports = {
     transferBalance: async (req,res) =>{
         const {id} = req.params
         try{
-           
-           
             const result = await Transaction.findById(id)
             const user = await User.findById(result.talentID)
-            console.log(result);
-            console.log(user);
             await User.findByIdAndUpdate(user._id,{balance:result.total + user.balance})
           
             await Transaction.findByIdAndUpdate(id,{total:0, status:'DONE'})
