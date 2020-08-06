@@ -81,7 +81,7 @@ module.exports = {
     },
     getAllServices: async (req,res) =>{
         try{
-            const result = await Service.find().populate('userID', 'username')
+            const result = await Service.find().populate('userID')
             res.send({message:'get all services', data:result})
         }
         catch(error){
