@@ -116,7 +116,7 @@ module.exports = {
     },
     registerBank: async (req, res) => {
         try {
-            const result = await User.create({ ...req.body });
+            const result = await User.findByIdAndUpdate(id, { ...req.body });
             res.send({ message: 'bank account added', data: result });
         } catch (error) {
             res.send(error);
