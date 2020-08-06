@@ -115,6 +115,7 @@ module.exports = {
         }
     },
     registerBank: async (req, res) => {
+        const { id } = req.params;
         try {
             const result = await User.findByIdAndUpdate(id, { ...req.body });
             res.send({ message: 'bank account added', data: result });
