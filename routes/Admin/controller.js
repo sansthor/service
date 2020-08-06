@@ -91,6 +91,27 @@ module.exports = {
         }
 
     },
+    filterAdminData: async (req, res) => {
+        const {
+            username
+        } = req.query
+
+        try {
+            const result = await Admin.find({
+                username: {
+                    $regex: username,
+                    $options: 'i'
+                }
+            }).exec();
+
+            res.send({
+                data: result
+            })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    },
     getDataUser: async (req, res) => {
         try {
             const result = await User.find().sort({
@@ -122,10 +143,16 @@ module.exports = {
         }
     },
     filterUserData: async (req, res) => {
-        const username = req.body.username
+        const {
+            fullname
+        } = req.query
+
         try {
             const result = await User.find({
-                username: username
+                fullname: {
+                    $regex: fullname,
+                    $options: 'i'
+                }
             }).exec();
 
             res.send({
@@ -208,39 +235,76 @@ module.exports = {
                 message: error.message
             })
         }
-
     },
+    filterServiceData: async (req, res) => {
+        const {
+            title
+        } = req.query
 
-    transferBalance: async (req,res) =>{
-        const {id} = req.params
-        try{
+        try {
+            const result = await Service.find({
+                title: {
+                    $regex: title,
+                    $options: 'i'
+                }
+            }).exec();
+
+            res.send({
+                data: result
+            })
+        } catch (error) {
+            res.send({
+                message: error.message
+            })
+        }
+    },
+    transferBalance: async (req, res) => {
+        const {
+            id
+        } = req.params
+        try {
             const result = await Transaction.findById(id)
             const user = await User.findById(result.talentID)
-            await User.findByIdAndUpdate(user._id,{balance:result.total + user.balance})
-          
-            await Transaction.findByIdAndUpdate(id,{total:0, status:'DONE'})
-            res.status(200).send({message:'transfer success', data:result})
-        }
-        catch(error){
+            await User.findByIdAndUpdate(user._id, {
+                balance: result.total + user.balance
+            })
+
+            await Transaction.findByIdAndUpdate(id, {
+                total: 0,
+                status: 'DONE'
+            })
+            res.status(200).send({
+                message: 'transfer success',
+                data: result
+            })
+        } catch (error) {
             console.log(error);
             res.send(error)
         }
     },
-    getStatusPending: async (req,res) => {
-        try{
-            const result = await Transaction.find({status:'IN PROGRESS'})
-            res.send({message:'all status in progress', data:result})
-        }
-        catch(error){
+    getStatusPending: async (req, res) => {
+        try {
+            const result = await Transaction.find({
+                status: 'IN PROGRESS'
+            })
+            res.send({
+                message: 'all status in progress',
+                data: result
+            })
+        } catch (error) {
             res.send(error)
         }
     },
-    getStatusDone: async (req,res) => {
-        try{
-            const result = await Transaction.find({status:'DONE'})
-            res.send({message:'all status done', data:result})
-        }
-        catch(error){
+    getStatusDone: async (req, res) => {
+        try {
+            const result = await Transaction.find({
+                status: 'DONE'
+            })
+            res.send({
+                message: 'all status done',
+                data: result
+            })
+        } catch (error) {
             res.send(error)
         }
     },
@@ -257,13 +321,38 @@ module.exports = {
             res.send(error)
         }
     },
-    deleteService: async (req,res) => {
-        const {id} = req.params
-        try{
-            const result = await Service.findByIdAndDelete(id)
-            res.send({message:'delete service', data:result})
+    filterTransactionData: async (req, res) => {
+        const {
+            status
+        } = req.query
+
+        try {
+            const result = await Transaction.find({
+                status: {
+                    $regex: status,
+                    $options: 'i'
+                }
+            }).exec();
+
+            res.send({
+                data: result
+            })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
         }
-        catch(error){
+    },
+    deleteService: async (req, res) => {
+        const {
+            id
+        } = req.params
+        try {
+            const result = await Service.findByIdAndDelete(id)
+            res.send({
+                message: 'delete service',
+                data: result
+            })
+        } catch (error) {
 
         }
     }
