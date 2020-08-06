@@ -8,7 +8,8 @@ router.get('/find', require('./controller').filterUser);
 
 //get all user data
 router.get('/', require('./controller').get);
-
+//get all order for seller
+router.get('/order/:talentID', require('./controller').getAllOrderById)
 //get by params id
 router.get('/:id', require('./controller').getById);
 //user registration

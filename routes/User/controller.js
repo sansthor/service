@@ -1,4 +1,4 @@
-const {User} = require('../../models');
+const {User, Transaction} = require('../../models');
 const {hash,compare} = require('../../helpers');
 const {createToken} = require('../../helpers');
 
@@ -115,6 +115,16 @@ module.exports = {
         try{
             const result = await User.create({...req.body})
             res.send({message:'bank account added', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
+    },
+    getAllOrderById: async (req,res) => {
+        const talentID = req.params
+        try{
+            const result = await Transaction.find(talentID).populate('talentID')
+            res.send({message:'get order for me', data:result})
         }
         catch(error){
             res.send(error)

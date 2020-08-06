@@ -7,7 +7,7 @@ router.get('/', require('./controller').getTransaction);
 //get transaction by id
 router.get('/:userID', require('./controller').getTransactionById);
 //get pending transaction
-//get complete transaction
+//get complete transaction/purchase history
 router.get('/status/completed', require('./controller').getStatusCompleted);
 //post order items
 router.post('/checkout', require('./controller').checkout);
