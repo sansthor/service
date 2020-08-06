@@ -13,8 +13,15 @@ router.get('/', require('./controller').getAdmin);
 //Get Filter Admin Data by UserName
 router.get('/getFilterDataAdmin', require('./controller').filterAdminData);
 
+//Get all Service status pending
+router.get('/order/status', require('./controller').getStatusPending)
+// get all status/done
+router.get('/order/status/done', require('./controller').getStatusDone)
+// transfer balance
+router.put('/order/transfer/:id', require('./controller').transferBalance)
 //GetDataUser
 router.get('/getDataUser', require('./controller').getDataUser)
+
 
 //Get User Data By Params id
 router.get('/getDataUser/:id', require('./controller').getUserById);
@@ -26,7 +33,9 @@ router.get('/getUserData', require('./controller').filterUserData);
 router.put('/updatedataadmin/:id', require('./controller').updateDataAdmin);
 
 //Delete Admin Data
-router.delete('/deletedataadmin/:id', require('./controller').deleteAdminData);
+router.delete('/deletedataadmin/:id', require('./controller').deleteAdminData)
+//Delete Service
+router.delete('/delete/service/:id', require('./controller').deleteService)
 
 //GetServiceData
 router.get('/getservicedata', require('./controller').getServiceData);

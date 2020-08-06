@@ -70,7 +70,6 @@ module.exports = {
                 })
             }
         } catch (error) {
-            console.log(error);
             res.send({
                 message: error.message
             })
@@ -236,7 +235,6 @@ module.exports = {
                 message: error.message
             })
         }
-
     },
     filterServiceData: async (req, res) => {
         const {
@@ -255,7 +253,58 @@ module.exports = {
                 data: result
             })
         } catch (error) {
+            res.send({
+                message: error.message
+            })
+        }
+    },
+    transferBalance: async (req, res) => {
+        const {
+            id
+        } = req.params
+        try {
+            const result = await Transaction.findById(id)
+            const user = await User.findById(result.talentID)
+            await User.findByIdAndUpdate(user._id, {
+                balance: result.total + user.balance
+            })
+
+            await Transaction.findByIdAndUpdate(id, {
+                total: 0,
+                status: 'DONE'
+            })
+            res.status(200).send({
+                message: 'transfer success',
+                data: result
+            })
+        } catch (error) {
             console.log(error);
+            res.send(error)
+        }
+    },
+    getStatusPending: async (req, res) => {
+        try {
+            const result = await Transaction.find({
+                status: 'IN PROGRESS'
+            })
+            res.send({
+                message: 'all status in progress',
+                data: result
+            })
+        } catch (error) {
+            res.send(error)
+        }
+    },
+    getStatusDone: async (req, res) => {
+        try {
+            const result = await Transaction.find({
+                status: 'DONE'
+            })
+            res.send({
+                message: 'all status done',
+                data: result
+            })
+        } catch (error) {
             res.send(error)
         }
     },
@@ -293,4 +342,18 @@ module.exports = {
             res.send(error)
         }
     },
+    deleteService: async (req, res) => {
+        const {
+            id
+        } = req.params
+        try {
+            const result = await Service.findByIdAndDelete(id)
+            res.send({
+                message: 'delete service',
+                data: result
+            })
+        } catch (error) {
+
+        }
+    }
 }

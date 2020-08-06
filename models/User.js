@@ -47,7 +47,8 @@ const UserSchema = new Schema({
         type:String
     },
     balance:{
-        type:Number
+        type:Number,
+        default:0
     },
    
     createdAt:{

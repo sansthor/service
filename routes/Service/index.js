@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const {verifyToken} = require('../../helpers')
 
-
-//get all list service
-router.get('/', require('./controller').getService);
+//get all services
+router.get('/', require('./controller').getAllServices)
 //get service details
 router.get('/details/:id', require('./controller').getDetails)
 // get service by user upload
 router.get('/find/:userID', require('./controller').getUserUpload)
+
 
 // get filter by category
 router.get('/findby/:category', require('./controller').getFilterCategory)

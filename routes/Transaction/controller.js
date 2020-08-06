@@ -29,15 +29,6 @@ module.exports = {
             res.send(error)
         }
     },
-    getStatusPending: async (req,res) => {
-        try{
-            const result = await Transaction.find({status:'IN PROGRESS'})
-            res.send({message:'all status in progress', data:result})
-        }
-        catch(error){
-            res.send(error)
-        }
-    },
     getStatusCompleted: async (req,res) => {
         try{
             const result = await Transaction.find({status:'completed'})
@@ -46,5 +37,6 @@ module.exports = {
         catch(error){
             res.send(error)
         }
-    }
+    },
+
 }
