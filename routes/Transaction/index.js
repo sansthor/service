@@ -15,5 +15,7 @@ router.put('/checkout', require('./controller').checkout);
 router.post('/cart', require('./controller').cart);
 //get cart by userID
 router.get('/cart/:userID', require('./controller').cartByID);
+//count transaction status in progress
+router.get('/count/:userID', require('./controller').count);
 
 module.exports = router;
