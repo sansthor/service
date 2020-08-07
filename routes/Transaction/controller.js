@@ -106,7 +106,7 @@ module.exports = {
     count: async (req, res) => {
         try {
             const { userID } = req.params;
-            const result = await Transaction.count({ userID });
+            const result = await Transaction.countDocuments({ userID });
 
             res.send({
                 message: 'get count by userID',
