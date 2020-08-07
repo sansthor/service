@@ -83,10 +83,20 @@ module.exports = {
             console.log(error);
         }
     },
-    updateStatusTransaction: async (req,res) => {
+    updateUserStatusTransaction: async (req,res) => {
         const {id} = req.params
         try{
-            const result = await Transaction.findByIdAndUpdate(id,{status:'DONE'})
+            const result = await Transaction.findByIdAndUpdate(id,{userStatus:'DONE'})
+            res.send({message:'status change to done', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
+    },
+    updateTalentStatus:async (req,res) => {
+        const {id} = req.params
+        try{
+            const result = await Transaction.findByIdAndUpdate(id,{talentStatus:'DONE'})
             res.send({message:'status change to done', data:result})
         }
         catch(error){

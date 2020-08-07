@@ -11,6 +11,7 @@ router.get('/:userID', require('./controller').getTransactionById);
 router.get('/status/completed/:id', require('./controller').getStatusCompleted);
 //post order items
 router.put('/purchase/:id', require('./controller').updateStatusTransaction);
+router.put('/seller/:id', require('./controller').updateTalentStatus)
 router.put('/checkout', require('./controller').checkout);
 //post order before payment
 router.post('/cart', require('./controller').cart);
