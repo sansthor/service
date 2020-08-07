@@ -37,7 +37,8 @@ module.exports = {
                 status: { $ne: 'CART' },
             })
                 .populate('serviceID')
-                .populate('userID');
+                .populate('userID')
+                .populate('talentID');
 
             res.send({ message: 'get transaction by id', data: result });
         } catch (error) {
@@ -72,8 +73,7 @@ module.exports = {
             const { userID } = req.params;
             const result = await Transaction.find({ userID })
                 .populate('serviceID')
-                .populate('userID')
-                .populate('talentID');
+                .populate('userID');
 
             res.send({
                 message: 'get cart by userID',
@@ -106,7 +106,7 @@ module.exports = {
     count: async (req, res) => {
         try {
             const { userID } = req.params;
-            const result = await Transaction.count({ userID });
+            const result = await Transaction.countDocuments({ userID });
 
             res.send({
                 message: 'get count by userID',
