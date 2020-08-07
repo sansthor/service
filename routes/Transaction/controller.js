@@ -67,9 +67,9 @@ module.exports = {
     cartByID: async (req, res) => {
         try {
             const { userID } = req.params;
-            const result = await Transaction.find({ userID }).populate(
-                'serviceID'
-            );
+            const result = await Transaction.find({ userID })
+                .populate('serviceID')
+                .populate('userID');
 
             res.send({
                 message: 'get cart by userID',
