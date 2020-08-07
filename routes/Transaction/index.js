@@ -10,7 +10,7 @@ router.get('/:userID', require('./controller').getTransactionById);
 //get complete transaction/purchase history
 router.get('/status/completed/:id', require('./controller').getStatusCompleted);
 //post order items
-router.put('/purchase/:id', require('./controller').updateStatusTransaction);
+router.put('/purchase/:id', require('./controller').updateUserStatusTransaction);
 router.put('/seller/:id', require('./controller').updateTalentStatus)
 router.put('/checkout', require('./controller').checkout);
 //post order before payment
