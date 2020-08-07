@@ -79,4 +79,17 @@ module.exports = {
             console.log(error);
         }
     },
+    count: async (req, res) => {
+        try {
+            const { userID } = req.params;
+            const result = await Transaction.count({ userID });
+
+            res.send({
+                message: 'get count by userID',
+                data: result,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
