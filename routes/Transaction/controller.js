@@ -30,11 +30,12 @@ module.exports = {
         }
     },
     getTransactionById: async (req, res) => {
-        const { transactionID } = req.params;
+        const { userID } = req.params;
         try {
-            const result = await Transaction.find({ transactionID }).populate(
-                'transactionID'
-            );
+            const result = await Transaction.find({ userID })
+                .populate('serviceID')
+                .populate('userID');
+
             res.send({ message: 'get transaction by id', data: result });
         } catch (error) {
             res.send(error);
