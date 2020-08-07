@@ -310,7 +310,7 @@ module.exports = {
     },
     getTransaction: async (req, res) => {
         try {
-            const result = await Transaction.find().populate('talentID').sort({
+            const result = await Transaction.find().populate('talentID').populate('userID').sort({
                 createdAt: 'desc'
             })
             res.send({
