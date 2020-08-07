@@ -11,5 +11,6 @@ router.get('/:userID', require('./controller').getTransactionById);
 router.get('/status/completed/:id', require('./controller').getStatusCompleted);
 //post order items
 router.post('/checkout', require('./controller').checkout);
+router.put('/purchase/:id', require('./controller').updateStatusTransaction);
 
 module.exports = router

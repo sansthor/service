@@ -39,5 +39,14 @@ module.exports = {
             res.send(error)
         }
     },
-
+    updateStatusTransaction: async (req,res) => {
+        const {id} = req.params
+        try{
+            const result = await Transaction.findByIdAndUpdate(id,{status:'DONE'})
+            res.send({message:'status change to done', data:result})
+        }
+        catch(error){
+            res.send(error)
+        }
+    }
 }

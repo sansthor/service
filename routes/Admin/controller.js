@@ -78,7 +78,7 @@ module.exports = {
     getAdmin: async (req, res) => {
         try {
             const result = await Admin.find().sort({
-                createdAt: 'asc'
+                createdAt: 'desc'
             })
             res.send({
                 message: 'Data Succesfull',
@@ -115,7 +115,7 @@ module.exports = {
     getDataUser: async (req, res) => {
         try {
             const result = await User.find().sort({
-                createdAt: 'asc'
+                createdAt: 'desc'
             })
             res.send({
                 message: 'Data Succesfull',
@@ -224,7 +224,7 @@ module.exports = {
     getServiceData: async (req, res) => {
         try {
             const result = await Service.find().populate('userID').sort({
-                createdAt: 'asc'
+                createdAt: 'desc'
             })
             res.send({
                 message: 'Data Service Succesfull',
@@ -311,7 +311,7 @@ module.exports = {
     getTransaction: async (req, res) => {
         try {
             const result = await Transaction.find().sort({
-                createdAt: 'asc'
+                createdAt: 'desc'
             })
             res.send({
                 message: 'All transaction',
