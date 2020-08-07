@@ -2,44 +2,48 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema({
-    talentID:{
-        type:Schema.Types.ObjectId,
-        ref:'users'
+    talentID: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
     },
-    userID:{
-        type:Schema.Types.ObjectId,
-        ref:'users'
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
     },
-    status:{
-        type:String,
-        default:'IN PROGRESS'
+    serviceID: {
+        type: Schema.Types.ObjectId,
+        ref: 'services',
     },
-    talentStatus:{
-        type:String,
-        default:'IN PROGRESS'
+    status: {
+        type: String,
+        default: 'IN PROGRESS',
     },
-    userStatus:{
-        type:String,
-        default:'IN PROGRESS'
+    talentStatus: {
+        type: String,
+        default: 'IN PROGRESS',
     },
-    total:{
-        type:Number,
-        default:0
+    userStatus: {
+        type: String,
+        default: 'IN PROGRESS',
     },
-    quantity:{
-        type:Number,
-        default:0
+    total: {
+        type: Number,
+        default: 0,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now
+    quantity: {
+        type: Number,
+        default: 0,
     },
-    updatedAt:{
-        type:Date,
-        default:Date.now
-    }
-})
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
-const Transaction = mongoose.model('transaction', TransactionSchema)
+const Transaction = mongoose.model('transaction', TransactionSchema);
 
 module.exports = Transaction;
