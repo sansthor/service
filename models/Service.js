@@ -1,47 +1,50 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const ServiceSchema = new Schema({
-    userID:{
-        type:Schema.Types.ObjectId,
-        ref:'users'
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
     },
-    title:{
-        type:String
+    title: {
+        type: String,
     },
-    image:{
-        type:String
+    image: {
+        type: String,
     },
-    desc:{
-        type:String
+    desc: {
+        type: String,
     },
-    price:{
-        type:Number
+    price: {
+        type: Number,
     },
-    category:{
-        type:String
+    category: {
+        type: String,
     },
-    processtime:{
-        type:String
+    processtime: {
+        type: String,
     },
-    requirement:{
-        type:String
+    requirement: {
+        type: String,
     },
-    commercialuse:{
-        type:Boolean
+    revision: {
+        type: String,
     },
-    additionalfeature:{
-        type:String
+    commercialuse: {
+        type: Boolean,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now
+    additionalfeature: {
+        type: String,
     },
-    updatedAt:{
-        type:Date,
-        default:Date.now
-    }
-})
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
 const Service = mongoose.model('services', ServiceSchema);
 
