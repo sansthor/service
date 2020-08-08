@@ -1,7 +1,6 @@
-const {User, Transaction} = require('../../models');
-const {hash,compare} = require('../../helpers');
-const {createToken} = require('../../helpers');
-
+const { User, Transaction } = require('../../models');
+const { hash, compare } = require('../../helpers');
+const { createToken } = require('../../helpers');
 
 module.exports = {
     get: async (req, res) => {
@@ -124,14 +123,16 @@ module.exports = {
             res.send(error);
         }
     },
-    getAllOrderById: async (req,res) => {
-        const talentID = req.params
-        try{
-            const result = await Transaction.find(talentID).populate('talentID')
-            res.send({message:'get order for me', data:result})
-        }
-        catch(error){
-            res.send(error)
+    getAllOrderById: async (req, res) => {
+        const talentID = req.params;
+        try {
+            const result = await Transaction.find(talentID)
+                .populate('talentID')
+                .populate('serviceID')
+                .populate('userID');
+            res.send({ message: 'get order for me', data: result });
+        } catch (error) {
+            res.send(error);
         }
     },
     logout: (req, res) => {
