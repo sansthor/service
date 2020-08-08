@@ -83,33 +83,35 @@ module.exports = {
             console.log(error);
         }
     },
-    updateUserStatusTransaction: async (req,res) => {
-        const {id} = req.params
-        try{
-            const result = await Transaction.findByIdAndUpdate(id,{userStatus:'DONE'})
-            res.send({message:'status change to done', data:result})
-        }
-        catch(error){
-            res.send(error)
+    updateUserStatusTransaction: async (req, res) => {
+        const { id } = req.params;
+        try {
+            const result = await Transaction.findByIdAndUpdate(id, {
+                userStatus: 'DONE',
+            });
+            res.send({ message: 'status change to done', data: result });
+        } catch (error) {
+            res.send(error);
         }
     },
-    updateTalentStatus:async (req,res) => {
-        const {id} = req.params
-        try{
-            const result = await Transaction.findByIdAndUpdate(id,{talentStatus:'DONE'})
-            res.send({message:'status change to done', data:result})
-        }
-        catch(error){
-            res.send(error)
+    updateTalentStatus: async (req, res) => {
+        const { id } = req.params;
+        try {
+            const result = await Transaction.findByIdAndUpdate(id, {
+                talentStatus: 'DONE',
+            });
+            res.send({ message: 'status change to done', data: result });
+        } catch (error) {
+            res.send(error);
         }
     },
     count: async (req, res) => {
         try {
             const { userID } = req.params;
-            const result = await Transaction.countDocuments({ userID });
+            const result = await Transaction.countDocuments({ talentID });
 
             res.send({
-                message: 'get count by userID',
+                message: 'get count by talentID',
                 data: result,
             });
         } catch (error) {
