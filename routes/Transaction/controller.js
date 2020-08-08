@@ -107,7 +107,7 @@ module.exports = {
     },
     count: async (req, res) => {
         try {
-            const { userID } = req.params;
+            const { talentID } = req.params;
             const result = await Transaction.countDocuments({ talentID });
 
             res.send({
