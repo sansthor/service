@@ -96,10 +96,10 @@ module.exports = {
     },
     updateTalentStatus: async (req, res) => {
         const { id } = req.params;
-        const { talentStatus } = req.body;
+
         try {
             await Transaction.findByIdAndUpdate(id, {
-                talentStatus,
+                talentStatus: 'DONE',
             });
             res.send({ message: 'status change' });
         } catch (error) {
