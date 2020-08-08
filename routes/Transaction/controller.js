@@ -96,11 +96,12 @@ module.exports = {
     },
     updateTalentStatus: async (req, res) => {
         const { id } = req.params;
+        const { talentStatus } = req.body;
         try {
-            const result = await Transaction.findByIdAndUpdate(id, {
-                talentStatus: 'DONE',
+            await Transaction.findByIdAndUpdate(id, {
+                talentStatus,
             });
-            res.send({ message: 'status change to done', data: result });
+            res.send({ message: 'status change' });
         } catch (error) {
             res.send(error);
         }
@@ -108,7 +109,10 @@ module.exports = {
     count: async (req, res) => {
         try {
             const { talentID } = req.params;
-            const result = await Transaction.countDocuments({ talentID });
+            const result = await Transaction.countDocuments({
+                talentID,
+                talentStatus: 'IN PROGRESS',
+            });
 
             res.send({
                 message: 'get count by talentID',
