@@ -298,8 +298,9 @@ module.exports = {
     getStatusDone: async (req, res) => {
         try {
             const result = await Transaction.find({
-                status: 'DONE'
-            })
+                    status: 'DONE'
+                }).populate('userID')
+                .populate('talentID');
             res.send({
                 message: 'all status done',
                 data: result
@@ -332,7 +333,7 @@ module.exports = {
                     $regex: status,
                     $options: 'i'
                 }
-            }).exec();
+            }).populate('talentID').populate('userID').exec();
 
             res.send({
                 data: result

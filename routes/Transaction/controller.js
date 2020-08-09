@@ -1,4 +1,6 @@
-const { Transaction } = require('../../models');
+const {
+    Transaction
+} = require('../../models');
 
 module.exports = {
     checkout: async (req, res) => {
@@ -14,7 +16,10 @@ module.exports = {
             });
 
             Promise.all(result).then((values) => {
-                res.status(200).send({ message: 'Order sent', data: values });
+                res.status(200).send({
+                    message: 'Order sent',
+                    data: values
+                });
             });
         } catch (error) {
             console.log(error);
@@ -24,41 +29,60 @@ module.exports = {
     getTransaction: async (req, res) => {
         try {
             const result = await Transaction.find();
-            res.send({ message: 'All transaction', data: result });
+            res.send({
+                message: 'All transaction',
+                data: result
+            });
         } catch (error) {
             res.send(error);
         }
     },
     getTransactionById: async (req, res) => {
-        const { userID } = req.params;
+        const {
+            userID
+        } = req.params;
         try {
             const result = await Transaction.find({
-                userID,
-                status: { $ne: 'CART' },
-            })
+                    userID,
+                    status: {
+                        $ne: 'CART'
+                    },
+                })
                 .populate('serviceID')
                 .populate('userID')
                 .populate('talentID');
 
-            res.send({ message: 'get transaction by id', data: result });
+            res.send({
+                message: 'get transaction by id',
+                data: result
+            });
         } catch (error) {
             res.send(error);
         }
     },
     getStatusCompleted: async (req, res) => {
-        const { id } = req.params;
+        const {
+            id
+        } = req.params;
         try {
-            const result = await Transaction.find({ _id: id }).where({
+            const result = await Transaction.find({
+                _id: id
+            }).where({
                 status: 'DONE',
             });
-            res.send({ message: 'all status completed', data: result });
+            res.send({
+                message: 'all status completed',
+                data: result
+            });
         } catch (error) {
             res.send(error);
         }
     },
     cart: async (req, res) => {
         try {
-            const result = await Transaction.create({ ...req.body });
+            const result = await Transaction.create({
+                ...req.body
+            });
 
             res.send({
                 message: 'your transaction added to cart',
@@ -70,8 +94,13 @@ module.exports = {
     },
     cartByID: async (req, res) => {
         try {
-            const { userID } = req.params;
-            const result = await Transaction.find({ userID, status: 'CART' })
+            const {
+                userID
+            } = req.params;
+            const result = await Transaction.find({
+                    userID,
+                    status: 'CART'
+                })
                 .populate('serviceID')
                 .populate('userID');
 
@@ -84,31 +113,42 @@ module.exports = {
         }
     },
     updateUserStatusTransaction: async (req, res) => {
-        const { id } = req.params;
+        const {
+            id
+        } = req.params;
         try {
             const result = await Transaction.findByIdAndUpdate(id, {
                 userStatus: 'DONE',
             });
-            res.send({ message: 'status change to done', data: result });
+            res.send({
+                message: 'status change to done',
+                data: result
+            });
         } catch (error) {
             res.send(error);
         }
     },
     updateTalentStatus: async (req, res) => {
-        const { id } = req.params;
+        const {
+            id
+        } = req.params;
 
         try {
             await Transaction.findByIdAndUpdate(id, {
                 talentStatus: 'DONE',
             });
-            res.send({ message: 'status change' });
+            res.send({
+                message: 'status change'
+            });
         } catch (error) {
             res.send(error);
         }
     },
     count: async (req, res) => {
         try {
-            const { talentID } = req.params;
+            const {
+                talentID
+            } = req.params;
             const result = await Transaction.countDocuments({
                 talentID,
                 talentStatus: 'IN PROGRESS',
