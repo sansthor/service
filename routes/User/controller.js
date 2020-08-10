@@ -80,12 +80,16 @@ module.exports = {
     updateUser: async (req, res) => {
         const { id } = req.params;
         const { password } = req.body;
-        const hashed = await hash(password);
 
         try {
+            if (password) {
+                const hashed = await hash(password);
+
+                req.body.password = hashed;
+            }
+            
             const result = await User.findByIdAndUpdate(id, {
                 ...req.body,
-                password: hashed,
             });
             res.send({ message: 'update success', data: result });
         } catch (error) {
