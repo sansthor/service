@@ -78,5 +78,24 @@ module.exports = {
         } catch (error) {
             res.send(error);
         }
+    },    getBestServices: async (req, res) => {
+        try {
+            const result = await Service.find({ category: 'BEST' })
+                .populate('userID')
+                .sort({ createdAt: 'desc' });
+            res.send({ message: 'get all services', data: result });
+        } catch (error) {
+            res.send(error);
+        }
+    },
+    getPopularServices: async (req, res) => {
+        try {
+            const result = await Service.find({ category: 'POPULAR' })
+                .populate('userID')
+                .sort({ createdAt: 'desc' });
+            res.send({ message: 'get all services', data: result });
+        } catch (error) {
+            res.send(error);
+        }
     },
 };

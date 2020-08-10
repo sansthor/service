@@ -20,6 +20,7 @@ const ServiceSchema = new Schema({
     },
     category: {
         type: String,
+        default: 'COMMON',
     },
     processtime: {
         type: String,
