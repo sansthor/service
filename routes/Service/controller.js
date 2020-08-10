@@ -78,7 +78,8 @@ module.exports = {
         } catch (error) {
             res.send(error);
         }
-    },    getBestServices: async (req, res) => {
+    },
+    getBestServices: async (req, res) => {
         try {
             const result = await Service.find({ category: 'BEST' })
                 .populate('userID')
@@ -94,6 +95,20 @@ module.exports = {
                 .populate('userID')
                 .sort({ createdAt: 'desc' });
             res.send({ message: 'get all services', data: result });
+        } catch (error) {
+            res.send(error);
+        }
+    },
+    putService: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const result = await Service.findByIdAndUpdate(id, {
+                ...req.body,
+            });
+            res.send({
+                message: 'update data success',
+                data: result,
+            });
         } catch (error) {
             res.send(error);
         }

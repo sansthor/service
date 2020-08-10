@@ -23,5 +23,7 @@ router.delete(
     verifyToken,
     require('./controller').deleteService
 );
+//put service
+router.put('/edit/:id', verifyToken, require('./controller').putService);
 
 module.exports = router;
